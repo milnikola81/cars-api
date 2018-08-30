@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Car;
+use App\Http\Requests\CarsPost;
 
 class CarsController extends Controller
 {
@@ -18,7 +19,7 @@ class CarsController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(CarsPost $request)
     {
         return Car::create($request->all());
     }
@@ -33,7 +34,7 @@ class CarsController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(CarsPost $request, $id)
     {
         $car = Car::findOrFail($id);
         $car->update($request->all());
